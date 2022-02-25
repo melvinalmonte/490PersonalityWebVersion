@@ -185,7 +185,7 @@ export const SecondQuestion = ({ SW }) => {
                   </Button>
                 </Box>
                 <Box width={"100%"}>
-                  <Progress size={"xs"} value={50} />
+                  <Progress size={'xs'} value={50} />
                 </Box>
               </VStack>
             </Form>
@@ -248,8 +248,8 @@ export const ThirdQuestion = ({ SW }) => {
               Submit Answer
             </Button>
           </Box>
-          <Box size={"xs"} pt={"5rem"} width={"100%"}>
-            <Progress size={"xs"} value={75} />
+          <Box size={'xs'} pt={"5rem"} width={"100%"}>
+            <Progress size={'xs'} value={75} />
           </Box>
         </Flex>
       </CenteredBox>
