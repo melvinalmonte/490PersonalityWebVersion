@@ -27,6 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToAnswer, clearAnswers } from "../../feature/answerSlice";
 import { useField } from "formik";
 import { CgDarkMode } from "react-icons/cg";
+import _ from "lodash";
 
 import "./styles.css";
 
@@ -55,7 +56,7 @@ const CardHeader = ({ title, question }) => (
 const CenteredBox = ({ children }) => (
   <Box
     display={"flex"}
-    height={{ base:"60%",  md: "95%", lg: "90%" }}
+    height={{ base: "60%", md: "95%", lg: "90%" }}
     textAlign={"center"}
     justifyContent={"center"}
     alignItems={"center"}
@@ -244,23 +245,10 @@ export const ThirdQuestion = ({ SW }) => {
   );
 };
 
-function getDuplicates(data) {
-  let dups = data.filter(
-    (
-      (s) => (v) =>
-        s.has(v) || !s.add(v)
-    )(new Set())
-  );
-  if (dups.length) {
-    return dups[0];
-  } else {
-    return "alien";
-  }
-}
-
 export const Results = ({ SW }) => {
   const dispatch = useDispatch();
   const choices = useSelector((state) => state["user_answers"].answers);
+  const result = _.head(_(choices.flat()).countBy().entries().maxBy(_.last));
   const types = {
     dog: "🐶",
     cat: "🐱",
@@ -277,13 +265,11 @@ export const Results = ({ SW }) => {
             <Text fontSize={"2xl"}>
               You are a{" "}
               <Text fontSize={"3xl"} as={"span"}>
-                {types[getDuplicates(choices)]}
+                {types[result]}
               </Text>
               !!
             </Text>
-            <Text fontSize={"lg"}>
-              {personalities[types[getDuplicates(choices)]]}
-            </Text>
+            <Text fontSize={"lg"}>{personalities[types[result]]}</Text>
           </VStack>
           <Box paddingTop={"5rem"}>
             <Button
