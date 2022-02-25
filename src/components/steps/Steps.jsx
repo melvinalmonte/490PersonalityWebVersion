@@ -41,7 +41,7 @@ const QuestionContainer = ({ children }) => {
 
 const CardHeader = ({ title, question }) => (
   <Box width={"100%"} textAlign={"center"}>
-    <Text pb={10} fontSize={"xl"} fontWeight={"bold"}>
+    <Text p={10} fontSize={"xl"} fontWeight={"bold"}>
       {title}
     </Text>
     {question && (
@@ -55,7 +55,7 @@ const CardHeader = ({ title, question }) => (
 const CenteredBox = ({ children }) => (
   <Box
     display={"flex"}
-    height={"90%"}
+    height={{ base:"60%",  md: "95%", lg: "90%" }}
     textAlign={"center"}
     justifyContent={"center"}
     alignItems={"center"}
@@ -89,7 +89,12 @@ export const IntroView = ({ SW }) => {
               <Button onClick={SW.nextStep}>Begin Personality Quiz</Button>
             </VStack>
           </CenteredBox>
-          <Flex>
+          <Flex
+            position={{ base: "absolute", md: "sticky" }}
+            bottom={0}
+            left={0}
+            width={"100%"}
+          >
             <Box>
               <Text fontSize={"2xl"}>🐇</Text>
             </Box>
