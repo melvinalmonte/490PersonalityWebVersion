@@ -193,7 +193,6 @@ export const ThirdQuestion = ({ SW }) => {
   const [sliderValue, setSliderValue] = useState(50);
 
   const answer = (val) => {
-    console.log(val);
     if (val > 75) {
       return "dog";
     } else if (val >= 50 && val <= 75) {
