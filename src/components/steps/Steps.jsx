@@ -7,6 +7,7 @@ import {
   FormControl,
   FormLabel,
   IconButton,
+  Progress,
   Slider,
   SliderFilledTrack,
   SliderMark,
@@ -117,7 +118,7 @@ export const FirstQuestion = ({ SW }) => {
     <QuestionContainer>
       <CardHeader title={"Question 1"} question={question} />
       <CenteredBox>
-        <VStack spacing={10}>
+        <VStack spacing={10} width={"50%"}>
           {answers.map((item) => (
             <Text
               key={item.answer}
@@ -131,6 +132,9 @@ export const FirstQuestion = ({ SW }) => {
               {item.answer}
             </Text>
           ))}
+          <Box width={"100%"}>
+            <Progress size={"xs"} value={25} />
+          </Box>
         </VStack>
       </CenteredBox>
     </QuestionContainer>
@@ -175,10 +179,15 @@ export const SecondQuestion = ({ SW }) => {
                     value={item["animal-type"]}
                   />
                 ))}
+                <Box>
+                  <Button mt={"5rem"} type={"submit"}>
+                    Submit Answer
+                  </Button>
+                </Box>
+                <Box width={"100%"}>
+                  <Progress size={"xs"} value={50} />
+                </Box>
               </VStack>
-              <Button mt={"5rem"} type={"submit"}>
-                Submit Answer
-              </Button>
             </Form>
           )}
         </Formik>
@@ -211,6 +220,7 @@ export const ThirdQuestion = ({ SW }) => {
         <Flex direction={"column"} w={"80%"}>
           <Box>
             <Slider
+              size={"lg"}
               aria-label="slider-ex-6"
               onChange={(val) => setSliderValue(val)}
             >
@@ -237,6 +247,9 @@ export const ThirdQuestion = ({ SW }) => {
             >
               Submit Answer
             </Button>
+          </Box>
+          <Box size={"xs"} pt={"5rem"} width={"100%"}>
+            <Progress size={"xs"} value={75} />
           </Box>
         </Flex>
       </CenteredBox>
