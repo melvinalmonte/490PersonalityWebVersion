@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import React from "react";
 import StepWizard from "react-step-wizard";
 import {
@@ -21,18 +20,12 @@ export const Wizard = () => {
   const { SW } = state;
 
   return (
-    <Box p={5} className="wizard-box">
-      <StepWizard
-        isLazyMount
-        instance={setInstance}
-        className="wizard-component"
-      >
-        <IntroView SW={SW} />
-        <FirstQuestion SW={SW} />
-        <SecondQuestion SW={SW} />
-        <ThirdQuestion SW={SW} />
-        <Results SW={SW} />
-      </StepWizard>
-    </Box>
+    <StepWizard isLazyMount instance={setInstance} className="wizard-component">
+      <IntroView SW={SW} />
+      <FirstQuestion SW={SW} />
+      <SecondQuestion SW={SW} />
+      <ThirdQuestion SW={SW} />
+      <Results SW={SW} />
+    </StepWizard>
   );
 };

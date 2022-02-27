@@ -2,10 +2,12 @@ import { useState } from "react";
 import {
   Box,
   Button,
+  Center,
   Container,
   Flex,
   FormControl,
   FormLabel,
+  Heading,
   IconButton,
   Progress,
   Slider,
@@ -29,85 +31,93 @@ import { addToAnswer, clearAnswers } from "../../feature/answerSlice";
 import { useField } from "formik";
 import { CgDarkMode } from "react-icons/cg";
 import _ from "lodash";
-
 import "./styles.css";
 
-const QuestionContainer = ({ children }) => {
+const CenteredBox = ({ children }) => (
+  <Box
+    width={"100%"}
+    maxWidth={"500px"}
+    margin={"0 auto"}
+    display={"flex"}
+    flexDirection={"column"}
+    height={"90%"}
+  >
+    <Container
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      flexGrow={1}
+      overflow={"hidden"}
+    >
+      {children}
+    </Container>
+  </Box>
+);
+
+const CustomContainer = ({ children }) => {
   const bg = useColorModeValue("white", "gray.700");
   return (
-    <Container height={"95vh"} shadow={"md"} bg={bg}>
+    <Container
+      background={bg}
+      padding={3}
+      height={"100%"}
+      shadow={"md"}
+      borderRadius={"md"}
+    >
       {children}
     </Container>
   );
 };
 
-const CardHeader = ({ title, question }) => (
-  <Box width={"100%"} textAlign={"center"}>
-    <Text p={10} fontSize={"xl"} fontWeight={"bold"}>
-      {title}
-    </Text>
-    {question && (
-      <Box>
-        <Text fontSize={"2xl"} marginBottom={"2rem"}>
-          {question}
-        </Text>
-      </Box>
-    )}
-  </Box>
-);
-
-const CenteredBox = ({ children }) => (
-  <Box
-    display={"flex"}
-    height={{ base: "60%", md: "95%", lg: "90%" }}
-    textAlign={"center"}
-    justifyContent={"center"}
-    alignItems={"center"}
-  >
-    {children}
-  </Box>
-);
-
 export const IntroView = ({ SW }) => {
   const { toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("white", "gray.700");
 
   return (
     <>
       {SW && (
-        <QuestionContainer>
-          <Flex>
-            <Box>
-              <Text fontSize={"2xl"}>🐶</Text>
-            </Box>
-            <Spacer />
-            <Box fontSize={"2xl"}>🐱</Box>
-          </Flex>
+        <CustomContainer
+          background={bg}
+          padding={3}
+          height={"100%"}
+          shadow={"md"}
+          borderRadius={"md"}
+        >
+          <Container>
+            <Flex direction={"row"}>
+              <Box>
+                <Text fontSize={"2xl"}>🐶</Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <IconButton
+                  aria-label={"color-mode"}
+                  icon={<CgDarkMode />}
+                  onClick={toggleColorMode}
+                />
+              </Box>
+              <Spacer />
+              <Box fontSize={"2xl"}>🐱</Box>
+            </Flex>
+          </Container>
           <CenteredBox>
             <VStack>
-              <IconButton
-                aria-label={"color-mode"}
-                icon={<CgDarkMode />}
-                onClick={toggleColorMode}
-              />
               <Text fontSize={"xl"}>Which Animal Are You?</Text>
               <Button onClick={SW.nextStep}>Begin Personality Quiz</Button>
             </VStack>
           </CenteredBox>
-          <Flex
-            position={{ base: "absolute", md: "sticky" }}
-            bottom={0}
-            left={0}
-            width={"100%"}
-          >
-            <Box>
-              <Text fontSize={"2xl"}>🐇</Text>
-            </Box>
-            <Spacer />
-            <Box>
-              <Text fontSize={"2xl"}>🐢</Text>
-            </Box>
-          </Flex>
-        </QuestionContainer>
+          <Container>
+            <Flex direction={"row"}>
+              <Box>
+                <Text fontSize={"2xl"}>🐇</Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize={"2xl"}>🐢</Text>
+              </Box>
+            </Flex>
+          </Container>
+        </CustomContainer>
       )}
     </>
   );
@@ -117,10 +127,15 @@ export const FirstQuestion = ({ SW }) => {
   const dispatch = useDispatch();
   const { question, answers } = data[0];
   return (
-    <QuestionContainer>
-      <CardHeader title={"Question 1"} question={question} />
+    <CustomContainer>
+      <Center>
+        <Heading>Question 1</Heading>
+      </Center>
       <CenteredBox>
-        <VStack spacing={10} width={"50%"}>
+        <VStack spacing={10} width={"100%"}>
+          <Center>
+            <Heading fontSize={"xl"}>{question}</Heading>
+          </Center>
           {answers.map((item) => (
             <Text
               key={item.answer}
@@ -134,12 +149,12 @@ export const FirstQuestion = ({ SW }) => {
               {item.answer}
             </Text>
           ))}
-          <Box width={"100%"}>
-            <Progress size={"xs"} value={25} />
-          </Box>
         </VStack>
       </CenteredBox>
-    </QuestionContainer>
+      <Box width={"100%"}>
+        <Progress colorScheme={"green"} size={"sm"} value={25} />
+      </Box>
+    </CustomContainer>
   );
 };
 
@@ -160,8 +175,10 @@ export const SecondQuestion = ({ SW }) => {
   const dispatch = useDispatch();
   const { question, answers } = data[1];
   return (
-    <QuestionContainer>
-      <CardHeader title={"Question 2"} question={question} />
+    <CustomContainer>
+      <Center>
+        <Heading>Question 2</Heading>
+      </Center>
       <CenteredBox>
         <Formik
           initialValues={{ choices: [] }}
@@ -172,7 +189,10 @@ export const SecondQuestion = ({ SW }) => {
         >
           {() => (
             <Form className={"form-container"}>
-              <VStack spacing={10}>
+              <VStack spacing={10} width={"100%"}>
+                <Center>
+                  <Heading fontSize={"xl"}>{question}</Heading>
+                </Center>
                 {answers.map((item) => (
                   <FormikSwitch
                     key={item.answer}
@@ -186,15 +206,15 @@ export const SecondQuestion = ({ SW }) => {
                     Submit Answer
                   </Button>
                 </Box>
-                <Box width={"100%"}>
-                  <Progress size={"xs"} value={50} />
-                </Box>
               </VStack>
             </Form>
           )}
         </Formik>
       </CenteredBox>
-    </QuestionContainer>
+      <Box width={"100%"}>
+        <Progress colorScheme={"green"} size={"sm"} value={50} />
+      </Box>
+    </CustomContainer>
   );
 };
 
@@ -216,11 +236,16 @@ export const ThirdQuestion = ({ SW }) => {
   };
 
   return (
-    <QuestionContainer>
-      <CardHeader title={"Question 3"} question={question} />
+    <CustomContainer>
+      <Center>
+        <Heading>Question 3</Heading>
+      </Center>
       <CenteredBox>
-        <Flex direction={"column"} w={"80%"}>
-          <Box>
+        <Flex direction={"column"} width={"100%"}>
+          <VStack spacing={10} width={"100%"}>
+            <Center>
+              <Heading fontSize={"xl"}>{question}</Heading>
+            </Center>
             <Slider
               size={"lg"}
               aria-label="slider-ex-6"
@@ -237,8 +262,8 @@ export const ThirdQuestion = ({ SW }) => {
               </SliderTrack>
               <SliderThumb />
             </Slider>
-          </Box>
-          <Box>
+          </VStack>
+          <Center>
             <Button
               mt={"5rem"}
               type={"submit"}
@@ -249,13 +274,13 @@ export const ThirdQuestion = ({ SW }) => {
             >
               Submit Answer
             </Button>
-          </Box>
-          <Box size={"xs"} pt={"5rem"} width={"100%"}>
-            <Progress size={"xs"} value={75} />
-          </Box>
+          </Center>
         </Flex>
       </CenteredBox>
-    </QuestionContainer>
+      <Box width={"100%"}>
+        <Progress colorScheme={"green"} size={"sm"} value={75} />
+      </Box>
+    </CustomContainer>
   );
 };
 
@@ -271,21 +296,23 @@ export const Results = ({ SW }) => {
     alien: "👽",
   };
   return (
-    <QuestionContainer>
-      <CardHeader title={"Results"} />
+    <CustomContainer>
+      <Center>
+        <Heading>Results</Heading>
+      </Center>
       <CenteredBox>
         <Stack direction={"column"} width={"80%"}>
-          <VStack>
-            <Text fontSize={"2xl"}>
+          <VStack textAlign={"center"}>
+            <Heading fontSize={"xl"}>
               You are a{" "}
               <Text fontSize={"3xl"} as={"span"}>
                 {types[result]}
               </Text>
               !!
-            </Text>
+            </Heading>
             <Text fontSize={"lg"}>{personalities[types[result]]}</Text>
           </VStack>
-          <Box paddingTop={"5rem"}>
+          <Center paddingTop={"5rem"}>
             <Button
               onClick={() => {
                 SW.firstStep();
@@ -294,9 +321,9 @@ export const Results = ({ SW }) => {
             >
               Done
             </Button>
-          </Box>
+          </Center>
         </Stack>
       </CenteredBox>
-    </QuestionContainer>
+    </CustomContainer>
   );
 };
