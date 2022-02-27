@@ -33,27 +33,6 @@ import { CgDarkMode } from "react-icons/cg";
 import _ from "lodash";
 import "./styles.css";
 
-const CenteredBox = ({ children }) => (
-  <Box
-    width={"100%"}
-    maxWidth={"500px"}
-    margin={"0 auto"}
-    display={"flex"}
-    flexDirection={"column"}
-    height={"90%"}
-  >
-    <Container
-      display={"flex"}
-      justifyContent={"center"}
-      alignItems={"center"}
-      flexGrow={1}
-      overflow={"hidden"}
-    >
-      {children}
-    </Container>
-  </Box>
-);
-
 const CustomContainer = ({ children }) => {
   const bg = useColorModeValue("white", "gray.700");
   return (
@@ -69,20 +48,34 @@ const CustomContainer = ({ children }) => {
   );
 };
 
+const CenteredBox = ({ children }) => (
+  <Box
+    width={"100%"}
+    maxWidth={"500px"}
+    margin={"0 auto"}
+    display={"flex"}
+    flexDirection={"column"}
+    height={"90%"}
+  >
+    <Container
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      flexGrow={1}
+      overflow={"auto"}
+    >
+      {children}
+    </Container>
+  </Box>
+);
+
 export const IntroView = ({ SW }) => {
   const { toggleColorMode } = useColorMode();
-  const bg = useColorModeValue("white", "gray.700");
 
   return (
     <>
       {SW && (
-        <CustomContainer
-          background={bg}
-          padding={3}
-          height={"100%"}
-          shadow={"md"}
-          borderRadius={"md"}
-        >
+        <CustomContainer>
           <Container>
             <Flex direction={"row"}>
               <Box>
@@ -132,7 +125,7 @@ export const FirstQuestion = ({ SW }) => {
         <Heading>Question 1</Heading>
       </Center>
       <CenteredBox>
-        <VStack spacing={10} width={"100%"}>
+        <VStack spacing={10}>
           <Center>
             <Heading fontSize={"xl"}>{question}</Heading>
           </Center>
@@ -189,7 +182,7 @@ export const SecondQuestion = ({ SW }) => {
         >
           {() => (
             <Form className={"form-container"}>
-              <VStack spacing={10} width={"100%"}>
+              <VStack spacing={{ base: 5, md: 10 }}>
                 <Center>
                   <Heading fontSize={"xl"}>{question}</Heading>
                 </Center>
@@ -202,7 +195,7 @@ export const SecondQuestion = ({ SW }) => {
                   />
                 ))}
                 <Box>
-                  <Button mt={"5rem"} type={"submit"}>
+                  <Button mt={{ base: "2rem", md: "5rem" }} type={"submit"}>
                     Submit Answer
                   </Button>
                 </Box>
