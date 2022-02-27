@@ -62,7 +62,7 @@ const CustomContainer = ({ children }) => {
       padding={3}
       height={"100%"}
       shadow={"md"}
-      borderRadius={"md"}
+      borderRadius={{ base: "none", md: "md" }}
     >
       {children}
     </Container>
