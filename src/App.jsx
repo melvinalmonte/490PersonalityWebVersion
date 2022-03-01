@@ -10,9 +10,22 @@ function App() {
   }, [orientation]);
 
   const detectOrientation = () => {
-    const isMobile = localStorage.mobile || window.navigator.maxTouchPoints > 1;
-    if (isMobile) {
-      setOrientation('IS MOBILE');
+    var orientation =
+      (screen.orientation || {}).type ||
+      screen.mozOrientation ||
+      screen.msOrientation;
+
+    if (orientation === "landscape-primary") {
+      setOrientation("landscape");
+    } else if (orientation === "landscape-secondary") {
+      setOrientation("landscape");
+    } else if (
+      orientation === "portrait-secondary" ||
+      orientation === "portrait-primary"
+    ) {
+      setOrientation("portrait");
+    } else if (orientation === undefined) {
+      setOrientation("unsupported");
     }
   };
 
