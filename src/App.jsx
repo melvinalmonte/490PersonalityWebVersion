@@ -3,7 +3,7 @@ import React from "react";
 import {
   // Box,
   // Container,
-  Text
+  Text,
 } from "@chakra-ui/react";
 
 function App() {
@@ -14,15 +14,15 @@ function App() {
   }, [orientation]);
 
   const detectOrientation = () => {
-    const isMobile = (localStorage.mobile || window.navigator.maxTouchPoints > 1) && (screen.availHeight < screen.availWidth) ;
+    const isMobile = localStorage.mobile || window.navigator.maxTouchPoints > 1;
     setOrientation(isMobile);
-    // if (isMobile) {
-    //   if (screen.availHeight < screen.availWidth) {
-    //     setOrientation("landscape");
-    //   } else {
-    //     setOrientation("portrait");
-    //   }
-    // }
+    if (isMobile) {
+      if (screen.availHeight > screen.availWidth) {
+        setOrientation("landscape");
+      } else {
+        setOrientation("portrait");
+      }
+    }
   };
 
   return (
