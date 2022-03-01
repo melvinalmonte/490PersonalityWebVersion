@@ -15,13 +15,11 @@ function App() {
 
   const detectOrientation = () => {
     const isMobile = localStorage.mobile || window.navigator.maxTouchPoints > 1;
-    setOrientation(isMobile);
     if (isMobile) {
-      if (screen.availHeight > screen.availWidth) {
-        setOrientation("landscape");
-      } else {
-        setOrientation("portrait");
+      if (window.outerWidth > window.outerHeight) {
+        return setOrientation("landscape");
       }
+      return setOrientation("portrait");
     }
   };
 
