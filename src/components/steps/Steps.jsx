@@ -34,13 +34,13 @@ import _ from "lodash";
 import "./styles.css";
 
 const CustomContainer = ({ children }) => {
-  const bg = useColorModeValue("white", "gray.700");
+  const bg = useColorModeValue("white", "#222831");
   return (
     <Container
       background={bg}
       padding={3}
       height={"100%"}
-      shadow={"md"}
+      shadow={"lg"}
       borderRadius={{ base: "none", md: "md" }}
     >
       {children}
@@ -71,7 +71,6 @@ const CenteredBox = ({ children }) => (
 
 export const IntroView = ({ SW }) => {
   const { toggleColorMode } = useColorMode();
-
   return (
     <>
       {SW && (
@@ -87,6 +86,8 @@ export const IntroView = ({ SW }) => {
                   aria-label={"color-mode"}
                   icon={<CgDarkMode />}
                   onClick={toggleColorMode}
+                  background={"transparent"}
+                  _hover={{ bg: "transparent" }}
                 />
               </Box>
               <Spacer />
@@ -95,8 +96,12 @@ export const IntroView = ({ SW }) => {
           </Container>
           <CenteredBox>
             <VStack>
-              <Text fontSize={"xl"}>Which Animal Are You?</Text>
-              <Button onClick={SW.nextStep}>Begin Personality Quiz</Button>
+              <Text color={"#00ADB5"} fontSize={"xl"}>
+                Which Animal Are You?
+              </Text>
+              <Button size={"sm"} borderRadius={"full"} onClick={SW.nextStep}>
+                Begin Personality Quiz
+              </Button>
             </VStack>
           </CenteredBox>
           <Container>
@@ -127,7 +132,9 @@ export const FirstQuestion = ({ SW }) => {
       <CenteredBox>
         <VStack spacing={10}>
           <Center>
-            <Heading fontSize={"xl"}>{question}</Heading>
+            <Heading color={"#00ADB5"} fontSize={"xl"}>
+              {question}
+            </Heading>
           </Center>
           {answers.map((item) => (
             <Text
@@ -145,7 +152,13 @@ export const FirstQuestion = ({ SW }) => {
         </VStack>
       </CenteredBox>
       <Box width={"100%"}>
-        <Progress colorScheme={"green"} size={"sm"} value={25} />
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          value={25}
+        />
       </Box>
     </CustomContainer>
   );
@@ -184,7 +197,9 @@ export const SecondQuestion = ({ SW }) => {
             <Form className={"form-container"}>
               <VStack spacing={{ base: 5, md: 10 }}>
                 <Center>
-                  <Heading fontSize={"xl"}>{question}</Heading>
+                  <Heading color={"#00ADB5"} fontSize={"xl"}>
+                    {question}
+                  </Heading>
                 </Center>
                 {answers.map((item) => (
                   <FormikSwitch
@@ -195,7 +210,12 @@ export const SecondQuestion = ({ SW }) => {
                   />
                 ))}
                 <Box>
-                  <Button mt={{ base: "2rem", md: "5rem" }} type={"submit"}>
+                  <Button
+                    size={"sm"}
+                    borderRadius={"full"}
+                    mt={{ base: "2rem", md: "5rem" }}
+                    type={"submit"}
+                  >
                     Submit Answer
                   </Button>
                 </Box>
@@ -205,7 +225,13 @@ export const SecondQuestion = ({ SW }) => {
         </Formik>
       </CenteredBox>
       <Box width={"100%"}>
-        <Progress colorScheme={"green"} size={"sm"} value={50} />
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          value={50}
+        />
       </Box>
     </CustomContainer>
   );
@@ -237,7 +263,9 @@ export const ThirdQuestion = ({ SW }) => {
         <Flex direction={"column"} width={"100%"}>
           <VStack spacing={10} width={"100%"}>
             <Center>
-              <Heading fontSize={"xl"}>{question}</Heading>
+              <Heading color={"#00ADB5"} fontSize={"xl"}>
+                {question}
+              </Heading>
             </Center>
             <Slider
               size={"lg"}
@@ -258,6 +286,8 @@ export const ThirdQuestion = ({ SW }) => {
           </VStack>
           <Center>
             <Button
+              size={"sm"}
+              borderRadius={"full"}
               mt={"5rem"}
               type={"submit"}
               onClick={() => {
@@ -271,7 +301,13 @@ export const ThirdQuestion = ({ SW }) => {
         </Flex>
       </CenteredBox>
       <Box width={"100%"}>
-        <Progress colorScheme={"green"} size={"sm"} value={75} />
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          value={75}
+        />
       </Box>
     </CustomContainer>
   );
@@ -307,6 +343,8 @@ export const Results = ({ SW }) => {
           </VStack>
           <Center paddingTop={"5rem"}>
             <Button
+              size={"sm"}
+              borderRadius={"full"}
               onClick={() => {
                 SW.firstStep();
                 dispatch(clearAnswers());
@@ -317,6 +355,15 @@ export const Results = ({ SW }) => {
           </Center>
         </Stack>
       </CenteredBox>
+      <Box width={"100%"}>
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          value={100}
+        />
+      </Box>
     </CustomContainer>
   );
 };

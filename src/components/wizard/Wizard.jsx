@@ -20,7 +20,11 @@ export const Wizard = () => {
   const { SW } = state;
 
   return (
-    <StepWizard isLazyMount instance={setInstance} className="wizard-component">
+    <StepWizard
+      isLazyMount
+      instance={setInstance}
+      className="wizard-component"
+    >
       <IntroView SW={SW} />
       <FirstQuestion SW={SW} />
       <SecondQuestion SW={SW} />
