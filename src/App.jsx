@@ -12,10 +12,17 @@ function App() {
   const detectOrientation = () => {
     const isMobile = localStorage.mobile || window.navigator.maxTouchPoints > 1;
     if (isMobile) {
-      if (window.outerWidth > window.outerHeight) {
+      if (window.outerHeight === 0) {
+        if (window.outerWidth > window.outerHeight) {
+          return setOrientation("portrait");
+        }
         return setOrientation("landscape");
+      } else {
+        if (window.outerWidth > window.outerHeight) {
+          return setOrientation("landscape");
+        }
+        return setOrientation("portrait");
       }
-      return setOrientation("portrait");
     }
   };
 
