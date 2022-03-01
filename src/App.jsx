@@ -10,19 +10,8 @@ function App() {
   }, [orientation]);
 
   const detectOrientation = () => {
-    if (
-      Window.orientation &&
-      (Window.orientation === 90 || Window.orientation === -90)
-    ) {
-      setOrientation("landscape");
-    } else {
-      setOrientation(
-        !navigator.maxTouchPoints
-          ? "desktop"
-          : !window.screen.orientation.angle
-          ? "portrait"
-          : "landscape"
-      );
+    if (typeof screen.orientation !== "undefined") {
+      setOrientation(screen.orientation);
     }
   };
 
