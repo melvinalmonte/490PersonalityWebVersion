@@ -14,7 +14,7 @@ function App() {
   }, [orientation]);
 
   const detectOrientation = () => {
-    const isMobile = localStorage.mobile || window.navigator.maxTouchPoints > 1;
+    const isMobile = (localStorage.mobile || window.navigator.maxTouchPoints > 1) && (screen.availHeight < screen.availWidth) ;
     setOrientation(isMobile);
     // if (isMobile) {
     //   if (screen.availHeight < screen.availWidth) {
