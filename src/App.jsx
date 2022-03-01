@@ -10,7 +10,10 @@ function App() {
   }, [orientation]);
 
   const detectOrientation = () => {
-    setOrientation(window.screen.orientation);
+    if (window.outerWidth > window.outerHeight) {
+      return setOrientation("landscape");
+    }
+    return setOrientation("portrait");
   };
 
   return (
