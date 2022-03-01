@@ -16,7 +16,10 @@ function App() {
   }, [orientation]);
 
   const detectOrientation = () => {
-    if (Window.orientation === 90 || Window.orientation === -90) {
+    if (
+      Window.orientation &&
+      (Window.orientation === 90 || Window.orientation === -90)
+    ) {
       setOrientation("landscape");
     } else {
       setOrientation(
