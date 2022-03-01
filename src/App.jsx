@@ -1,5 +1,5 @@
 import React from "react";
-import { Wizard } from "./components/wizard/Wizard";
+// import { Wizard } from "./components/wizard/Wizard";
 import { Text } from "@chakra-ui/react";
 
 function App() {
@@ -28,8 +28,8 @@ function App() {
 
   return (
     <>
-      <Text>{orientation}</Text>
-      <Wizard />
+      <Text>{JSON.stringify({ orientation: orientation }, null, 2)}</Text>
+      {/*<Wizard />*/}
     </>
   );
 }
