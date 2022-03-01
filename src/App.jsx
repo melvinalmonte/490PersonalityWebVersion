@@ -6,43 +6,40 @@ function App() {
   const [orientation, setOrientation] = React.useState("");
 
   React.useEffect(() => {
-    window.addEventListener("orientationchange", detectOrientation);
+    window.addEventListener("change", detectOrientation);
   }, [orientation]);
 
-  const detectOrientation = () => {
-    if (screen.availHeight < screen.availWidth) {
-      setOrientation("landscape");
-    } else {
-      setOrientation("portrait");
-    }
+  const detectOrientation = (e) => {
+    setOrientation(e.currentTarget.type);
   };
 
   return (
     <>
-      {orientation === "landscape" ? (
-        <Box
-          width={"100%"}
-          maxWidth={"500px"}
-          margin={"0 auto"}
-          display={"flex"}
-          flexDirection={"column"}
-          height={"100%"}
-        >
-          <Container
-            display={"flex"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            flexGrow={1}
-            overflow={"auto"}
-          >
-            <Text color={"#00ADB5"}>
-              Landscape mode is currently not supported.
-            </Text>
-          </Container>
-        </Box>
-      ) : (
-        <Wizard />
-      )}
+      {console.log(JSON.stringify({ orientation: orientation }, null, 2))}
+      {/*{orientation === "landscape" ? (*/}
+      {/*  <Box*/}
+      {/*    width={"100%"}*/}
+      {/*    maxWidth={"500px"}*/}
+      {/*    margin={"0 auto"}*/}
+      {/*    display={"flex"}*/}
+      {/*    flexDirection={"column"}*/}
+      {/*    height={"100%"}*/}
+      {/*  >*/}
+      {/*    <Container*/}
+      {/*      display={"flex"}*/}
+      {/*      justifyContent={"center"}*/}
+      {/*      alignItems={"center"}*/}
+      {/*      flexGrow={1}*/}
+      {/*      overflow={"auto"}*/}
+      {/*    >*/}
+      {/*      <Text color={"#00ADB5"}>*/}
+      {/*        Landscape mode is currently not supported.*/}
+      {/*      </Text>*/}
+      {/*    </Container>*/}
+      {/*  </Box>*/}
+      {/*) : (*/}
+      {/*  <Wizard />*/}
+      {/*)}*/}
     </>
   );
 }
