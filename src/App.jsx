@@ -7,7 +7,7 @@ function App() {
 
   React.useEffect(() => {
     window.addEventListener("orientationchange", detectOrientation);
-  }, []);
+  }, [orientation]);
 
   const detectOrientation = () => {
     if (screen.availHeight < screen.availWidth) {
