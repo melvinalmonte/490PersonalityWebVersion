@@ -1,6 +1,11 @@
 import React from "react";
 import { Wizard } from "./components/wizard/Wizard";
-import { Box, Container, Fade, Heading } from "@chakra-ui/react";
+import {
+  // Box,
+  // Container,
+  // Fade,
+  // Heading,
+  Text } from "@chakra-ui/react";
 
 function App() {
   const [orientation, setOrientation] = React.useState(
@@ -33,32 +38,33 @@ function App() {
   };
   return (
     <>
-      {orientation === "landscape" ? (
-        <Box
-          width={"100%"}
-          maxWidth={"500px"}
-          margin={"0 auto"}
-          display={"flex"}
-          flexDirection={"column"}
-          height={"100%"}
-        >
-          <Container
-            display={"flex"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            flexGrow={1}
-            overflow={"auto"}
-          >
-            <Fade in>
-              <Heading fontSize={"xl"} color={"#00ADB5"}>
-                Landscape mode is not supported.
-              </Heading>
-            </Fade>
-          </Container>
-        </Box>
-      ) : (
-        <Wizard />
-      )}
+      <Text>{orientation}</Text>
+      {/*{orientation === "landscape" ? (*/}
+      {/*  <Box*/}
+      {/*    width={"100%"}*/}
+      {/*    maxWidth={"500px"}*/}
+      {/*    margin={"0 auto"}*/}
+      {/*    display={"flex"}*/}
+      {/*    flexDirection={"column"}*/}
+      {/*    height={"100%"}*/}
+      {/*  >*/}
+      {/*    <Container*/}
+      {/*      display={"flex"}*/}
+      {/*      justifyContent={"center"}*/}
+      {/*      alignItems={"center"}*/}
+      {/*      flexGrow={1}*/}
+      {/*      overflow={"auto"}*/}
+      {/*    >*/}
+      {/*      <Fade in>*/}
+      {/*        <Heading fontSize={"xl"} color={"#00ADB5"}>*/}
+      {/*          Landscape mode is not supported.*/}
+      {/*        </Heading>*/}
+      {/*      </Fade>*/}
+      {/*    </Container>*/}
+      {/*  </Box>*/}
+      {/*) : (*/}
+      <Wizard />
+      {/*)}*/}
     </>
   );
 }
