@@ -10,11 +10,7 @@ function App() {
   }, [orientation]);
 
   const detectOrientation = () => {
-    var orientation =
-      (screen.orientation || {}).type ||
-      screen.mozOrientation ||
-      screen.msOrientation;
-    setOrientation(orientation);
+    setOrientation(window.screen.orientation);
   };
 
   return (
