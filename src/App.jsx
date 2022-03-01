@@ -1,20 +1,8 @@
 import React from "react";
 import { Wizard } from "./components/wizard/Wizard";
-import {
-  // Box,
-  // Container,
-  // Fade,
-  // Heading,
-  Text } from "@chakra-ui/react";
 
 function App() {
-  const [orientation, setOrientation] = React.useState(
-    !navigator.maxTouchPoints
-      ? "desktop"
-      : !window.screen.orientation.angle
-      ? "portrait"
-      : "landscape"
-  );
+  const [orientation, setOrientation] = React.useState("");
 
   React.useEffect(() => {
     window.addEventListener("resize", detectOrientation);
@@ -36,37 +24,8 @@ function App() {
       );
     }
   };
-  return (
-    <>
-      <Text>{orientation}</Text>
-      {/*{orientation === "landscape" ? (*/}
-      {/*  <Box*/}
-      {/*    width={"100%"}*/}
-      {/*    maxWidth={"500px"}*/}
-      {/*    margin={"0 auto"}*/}
-      {/*    display={"flex"}*/}
-      {/*    flexDirection={"column"}*/}
-      {/*    height={"100%"}*/}
-      {/*  >*/}
-      {/*    <Container*/}
-      {/*      display={"flex"}*/}
-      {/*      justifyContent={"center"}*/}
-      {/*      alignItems={"center"}*/}
-      {/*      flexGrow={1}*/}
-      {/*      overflow={"auto"}*/}
-      {/*    >*/}
-      {/*      <Fade in>*/}
-      {/*        <Heading fontSize={"xl"} color={"#00ADB5"}>*/}
-      {/*          Landscape mode is not supported.*/}
-      {/*        </Heading>*/}
-      {/*      </Fade>*/}
-      {/*    </Container>*/}
-      {/*  </Box>*/}
-      {/*) : (*/}
-      <Wizard />
-      {/*)}*/}
-    </>
-  );
+
+  return <Wizard />;
 }
 
 export default App;
