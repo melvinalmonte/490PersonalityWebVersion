@@ -1,9 +1,6 @@
 import React from "react";
-// import { Wizard } from "./components/wizard/Wizard";
-import {
-  // Box,
-  // Container,
-  Text } from "@chakra-ui/react";
+import { Wizard } from "./components/wizard/Wizard";
+import { Box, Container, Text } from "@chakra-ui/react";
 
 function App() {
   const [orientation, setOrientation] = React.useState("");
@@ -22,48 +19,45 @@ function App() {
 
     if (isMobile) {
       if (isSafari) {
-        setOrientation(isSafari);
-        // if (window.outerWidth > window.outerHeight) {
-        //   return setOrientation("portrait");
-        // }
-        // return setOrientation("landscape");
+        if (window.outerWidth < window.outerHeight) {
+          return setOrientation("landscape");
+        }
+        return setOrientation("portrait");
       } else {
-        setOrientation(isSafari);
-        // if (window.outerWidth > window.outerHeight) {
-        //   return setOrientation("landscape");
-        // }
-        // return setOrientation("portrait");
+        if (window.outerWidth > window.outerHeight) {
+          return setOrientation("landscape");
+        }
+        return setOrientation("portrait");
       }
     }
   };
 
   return (
     <>
-      <Text>{JSON.stringify({ isSafari: orientation }, null, 2)}</Text>
-      {/*{orientation === "landscape" ? (*/}
-      {/*  <Box*/}
-      {/*    width={"100%"}*/}
-      {/*    maxWidth={"500px"}*/}
-      {/*    margin={"0 auto"}*/}
-      {/*    display={"flex"}*/}
-      {/*    flexDirection={"column"}*/}
-      {/*    height={"100%"}*/}
-      {/*  >*/}
-      {/*    <Container*/}
-      {/*      display={"flex"}*/}
-      {/*      justifyContent={"center"}*/}
-      {/*      alignItems={"center"}*/}
-      {/*      flexGrow={1}*/}
-      {/*      overflow={"auto"}*/}
-      {/*    >*/}
-      {/*      <Text color={"#00ADB5"}>*/}
-      {/*        Landscape mode is currently not supported.*/}
-      {/*      </Text>*/}
-      {/*    </Container>*/}
-      {/*  </Box>*/}
-      {/*) : (*/}
-      {/*  <Wizard />*/}
-      {/*)}*/}
+      {orientation === "landscape" ? (
+        <Box
+          width={"100%"}
+          maxWidth={"500px"}
+          margin={"0 auto"}
+          display={"flex"}
+          flexDirection={"column"}
+          height={"100%"}
+        >
+          <Container
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            flexGrow={1}
+            overflow={"auto"}
+          >
+            <Text color={"#00ADB5"}>
+              Landscape mode is currently not supported.
+            </Text>
+          </Container>
+        </Box>
+      ) : (
+        <Wizard />
+      )}
     </>
   );
 }
