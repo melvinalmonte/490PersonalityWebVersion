@@ -1,5 +1,6 @@
 import React from "react";
 import { Wizard } from "./components/wizard/Wizard";
+import { Text } from "@chakra-ui/react";
 
 function App() {
   const [orientation, setOrientation] = React.useState("");
@@ -25,7 +26,12 @@ function App() {
     }
   };
 
-  return <Wizard />;
+  return (
+    <>
+      <Text>{orientation}</Text>
+      <Wizard />
+    </>
+  );
 }
 
 export default App;
