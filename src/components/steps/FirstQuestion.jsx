@@ -1,17 +1,37 @@
 import { useDispatch } from "react-redux";
 import data from "../../data/questions.json";
-import { Box, Center, Heading, Progress, Text, VStack } from "@chakra-ui/react";
+import {
+  Center,
+  Heading,
+  Progress,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { addToAnswer } from "../../feature/answerSlice";
-import { CenteredBox, CustomContainer } from "./Utils";
+import { CenteredBox } from "./Utils";
+import { Layout } from "../layout";
 
 const FirstQuestion = ({ SW }) => {
   const dispatch = useDispatch();
   const { question, answers } = data[0];
   return (
-    <CustomContainer>
-      <Center>
-        <Heading>Question 1</Heading>
-      </Center>
+    <Layout
+      header={
+        <Center>
+          <Heading>Question 1</Heading>
+        </Center>
+      }
+      footer={
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          max={4}
+          value={1}
+        />
+      }
+    >
       <CenteredBox>
         <VStack spacing={10}>
           <Center>
@@ -34,16 +54,7 @@ const FirstQuestion = ({ SW }) => {
           ))}
         </VStack>
       </CenteredBox>
-      <Box width={"100%"}>
-        <Progress
-          hasStripe
-          isAnimated
-          colorScheme={"green"}
-          size={"xs"}
-          value={25}
-        />
-      </Box>
-    </CustomContainer>
+    </Layout>
   );
 };
 

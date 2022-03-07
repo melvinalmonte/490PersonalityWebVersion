@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import {
-  Box,
   Button,
   Center,
   Heading,
@@ -12,7 +11,8 @@ import {
 } from "@chakra-ui/react";
 import personalities from "../../data/personalities.json";
 import { clearAnswers } from "../../feature/answerSlice";
-import { CenteredBox, CustomContainer } from "./Utils";
+import { CenteredBox } from "./Utils";
+import { Layout } from "../layout";
 
 const Results = ({ SW }) => {
   const dispatch = useDispatch();
@@ -26,10 +26,23 @@ const Results = ({ SW }) => {
     alien: "👽",
   };
   return (
-    <CustomContainer>
-      <Center>
-        <Heading>Results</Heading>
-      </Center>
+    <Layout
+      header={
+        <Center>
+          <Heading>Results</Heading>
+        </Center>
+      }
+      footer={
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          max={4}
+          value={4}
+        />
+      }
+    >
       <CenteredBox>
         <Stack direction={"column"} width={"80%"}>
           <VStack textAlign={"center"}>
@@ -56,16 +69,7 @@ const Results = ({ SW }) => {
           </Center>
         </Stack>
       </CenteredBox>
-      <Box width={"100%"}>
-        <Progress
-          hasStripe
-          isAnimated
-          colorScheme={"green"}
-          size={"xs"}
-          value={100}
-        />
-      </Box>
-    </CustomContainer>
+    </Layout>
   );
 };
 

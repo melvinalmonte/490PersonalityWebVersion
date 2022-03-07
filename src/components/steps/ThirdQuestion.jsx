@@ -2,7 +2,6 @@ import data from "../../data/questions.json";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import {
-  Box,
   Button,
   Center,
   Flex,
@@ -17,7 +16,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { addToAnswer } from "../../feature/answerSlice";
-import { CenteredBox, CustomContainer } from "./Utils";
+import { CenteredBox } from "./Utils";
+import { Layout } from "../layout";
 
 const answer = (val) => {
   if (val > 75) {
@@ -37,10 +37,23 @@ const ThirdQuestion = ({ SW }) => {
   const [sliderValue, setSliderValue] = useState(50);
 
   return (
-    <CustomContainer>
-      <Center>
-        <Heading>Question 3</Heading>
-      </Center>
+    <Layout
+      header={
+        <Center>
+          <Heading>Question 3</Heading>
+        </Center>
+      }
+      footer={
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          max={4}
+          value={3}
+        />
+      }
+    >
       <CenteredBox>
         <Flex direction={"column"} width={"100%"}>
           <VStack spacing={10} width={"100%"}>
@@ -82,16 +95,7 @@ const ThirdQuestion = ({ SW }) => {
           </Center>
         </Flex>
       </CenteredBox>
-      <Box width={"100%"}>
-        <Progress
-          hasStripe
-          isAnimated
-          colorScheme={"green"}
-          size={"xs"}
-          value={75}
-        />
-      </Box>
-    </CustomContainer>
+    </Layout>
   );
 };
 

@@ -14,8 +14,9 @@ import {
 import { useDispatch } from "react-redux";
 import data from "../../data/questions.json";
 import { addToAnswer } from "../../feature/answerSlice";
-import { CenteredBox, CustomContainer } from "./Utils";
+import { CenteredBox } from "./Utils";
 import "./styles.css";
+import { Layout } from "../layout";
 
 const FormikSwitch = ({ answer, ...props }) => {
   const [field] = useField({ ...props, type: "checkbox" });
@@ -34,10 +35,23 @@ const SecondQuestion = ({ SW }) => {
   const dispatch = useDispatch();
   const { question, answers } = data[1];
   return (
-    <CustomContainer>
-      <Center>
-        <Heading>Question 2</Heading>
-      </Center>
+    <Layout
+      header={
+        <Center>
+          <Heading>Question 2</Heading>
+        </Center>
+      }
+      footer={
+        <Progress
+          hasStripe
+          isAnimated
+          colorScheme={"green"}
+          size={"xs"}
+          max={4}
+          value={2}
+        />
+      }
+    >
       <CenteredBox>
         <Formik
           initialValues={{ choices: [] }}
@@ -77,16 +91,7 @@ const SecondQuestion = ({ SW }) => {
           )}
         </Formik>
       </CenteredBox>
-      <Box width={"100%"}>
-        <Progress
-          hasStripe
-          isAnimated
-          colorScheme={"green"}
-          size={"xs"}
-          value={50}
-        />
-      </Box>
-    </CustomContainer>
+    </Layout>
   );
 };
 

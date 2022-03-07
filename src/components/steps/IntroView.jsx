@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Container,
   Flex,
   IconButton,
   Spacer,
@@ -10,15 +9,16 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { CgDarkMode } from "react-icons/cg";
-import { CenteredBox, CustomContainer } from "./Utils";
+import { CenteredBox } from "./Utils";
+import { Layout } from "../layout";
 
 const IntroView = ({ SW }) => {
   const { toggleColorMode } = useColorMode();
   return (
     <>
       {SW && (
-        <CustomContainer>
-          <Container>
+        <Layout
+          header={
             <Flex direction={"row"}>
               <Box>
                 <Text fontSize={"2xl"}>🐶</Text>
@@ -36,7 +36,19 @@ const IntroView = ({ SW }) => {
               <Spacer />
               <Box fontSize={"2xl"}>🐱</Box>
             </Flex>
-          </Container>
+          }
+          footer={
+            <Flex direction={"row"}>
+              <Box>
+                <Text fontSize={"2xl"}>🐇</Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize={"2xl"}>🐢</Text>
+              </Box>
+            </Flex>
+          }
+        >
           <CenteredBox>
             <VStack>
               <Text color={"#00ADB5"} fontSize={"xl"}>
@@ -47,18 +59,7 @@ const IntroView = ({ SW }) => {
               </Button>
             </VStack>
           </CenteredBox>
-          <Container>
-            <Flex direction={"row"}>
-              <Box>
-                <Text fontSize={"2xl"}>🐇</Text>
-              </Box>
-              <Spacer />
-              <Box>
-                <Text fontSize={"2xl"}>🐢</Text>
-              </Box>
-            </Flex>
-          </Container>
-        </CustomContainer>
+        </Layout>
       )}
     </>
   );
