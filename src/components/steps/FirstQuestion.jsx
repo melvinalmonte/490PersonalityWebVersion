@@ -1,12 +1,6 @@
 import { useDispatch } from "react-redux";
 import data from "../../data/questions.json";
-import {
-  Center,
-  Heading,
-  Progress,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Center, Heading, Progress, Text, VStack } from "@chakra-ui/react";
 import { addToAnswer } from "../../feature/answerSlice";
 import { CenteredBox } from "./Utils";
 import { Layout } from "../layout";

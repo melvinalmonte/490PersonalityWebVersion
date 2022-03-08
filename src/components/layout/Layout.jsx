@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Box,
-  chakra,
-  Container,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, chakra, Container, useColorModeValue } from "@chakra-ui/react";
 
 const Layout = ({ header, children, footer }) => {
   const bg = useColorModeValue("white", "#222831");
