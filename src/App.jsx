@@ -1,6 +1,8 @@
-import React from "react";
-import { Wizard } from "./components/wizard/Wizard";
+import React, { lazy, Suspense } from "react";
 import { Box, Container, Text } from "@chakra-ui/react";
+import { Loader } from "./components/loader";
+
+const Wizard = lazy(() => import("./components/wizard/Wizard"));
 
 function App() {
   const [orientation, setOrientation] = React.useState("");
@@ -56,7 +58,9 @@ function App() {
           </Container>
         </Box>
       ) : (
-        <Wizard />
+        <Suspense fallback={<Loader />}>
+          <Wizard />
+        </Suspense>
       )}
     </>
   );

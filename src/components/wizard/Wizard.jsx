@@ -9,7 +9,7 @@ import {
 } from "../steps";
 import "./styles.css";
 
-export const Wizard = () => {
+const Wizard = () => {
   const [state, updateState] = React.useState({});
 
   const setInstance = (SW) =>
@@ -29,3 +29,5 @@ export const Wizard = () => {
     </StepWizard>
   );
 };
+
+export default Wizard;
