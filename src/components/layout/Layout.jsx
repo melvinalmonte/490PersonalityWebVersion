@@ -4,12 +4,13 @@ import { Box, chakra, Container, useColorModeValue } from "@chakra-ui/react";
 const Layout = ({ header, children, footer }) => {
   const bg = useColorModeValue("white", "#222831");
   return (
-    <Container
+    <Box height='100%' display='flex' justifyContent='center' alignItems='center'>
+      <Container
       background={bg}
-      height={"100%"}
+      height={["100%", '70%']}
       display={"flex"}
       flexDirection={"column"}
-      shadow={"lg"}
+      shadow={"dark-lg"}
       borderRadius={{ base: "none", md: "md" }}
     >
       <chakra.header width={"100%"} px={{ base: 2, sm: 4 }} py={4}>
@@ -33,6 +34,8 @@ const Layout = ({ header, children, footer }) => {
         {footer}
       </chakra.footer>
     </Container>
+
+    </Box>
   );
 };
 
