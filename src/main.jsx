@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import store from "./feature/store";
 import { registerSW } from "virtual:pwa-register";
 
+// Registering PWA serviceworker
 if ("serviceWorker" in navigator) {
-    // && !/localhost/.test(window.location)) {
     registerSW();
 }
 
