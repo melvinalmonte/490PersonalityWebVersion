@@ -5,6 +5,12 @@ import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import store from "./feature/store";
+import { registerSW } from "virtual:pwa-register";
+
+if ("serviceWorker" in navigator) {
+    // && !/localhost/.test(window.location)) {
+    registerSW();
+}
 
 ReactDOM.render(
   <React.StrictMode>
