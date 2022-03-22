@@ -10,6 +10,7 @@ import {
   Progress,
   Spacer,
   Switch,
+  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
@@ -65,7 +66,10 @@ const SecondQuestion = ({ SW }) => {
             <Form className={"form-container"}>
               <VStack spacing={{ base: 5, md: 10 }}>
                 <Center>
-                  <Heading color={"#00ADB5"} fontSize={"xl"}>
+                  <Heading
+                    color={useColorModeValue("rebeccapurple", "#00ADB5")}
+                    fontSize={"xl"}
+                  >
                     {question}
                   </Heading>
                 </Center>

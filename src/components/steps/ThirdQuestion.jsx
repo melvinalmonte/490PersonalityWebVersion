@@ -14,6 +14,7 @@ import {
   SliderThumb,
   SliderTrack,
   Text,
+  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import { addToAnswer } from "../../feature/answerSlice";
@@ -59,7 +60,10 @@ const ThirdQuestion = ({ SW }) => {
         <Flex direction={"column"} width={"100%"}>
           <VStack spacing={10} width={"100%"}>
             <Center>
-              <Heading color={"#00ADB5"} fontSize={"xl"}>
+              <Heading
+                color={useColorModeValue("rebeccapurple", "#00ADB5")}
+                fontSize={"xl"}
+              >
                 {question}
               </Heading>
             </Center>

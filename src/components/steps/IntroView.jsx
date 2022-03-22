@@ -6,7 +6,7 @@ import {
   IconButton,
   Spacer,
   Text,
-  useColorMode,
+  useColorMode, useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import { CgDarkMode } from "react-icons/cg";
@@ -52,7 +52,7 @@ const IntroView = ({ SW }) => {
         >
           <CenteredBox>
             <VStack>
-              <Text color={"#00ADB5"} fontSize={"xl"}>
+              <Text color={useColorModeValue("rebeccapurple", "#00ADB5")} fontSize={"xl"}>
                 Which Animal Are You?
               </Text>
               <Button size={"sm"} borderRadius={"full"} onClick={SW.nextStep}>

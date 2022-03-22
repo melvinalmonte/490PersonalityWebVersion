@@ -1,7 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import data from "../../data/questions.json";
-import { Center, Heading, Progress, Text, VStack } from "@chakra-ui/react";
+import {
+  Center,
+  Heading,
+  Progress,
+  Text,
+  useColorModeValue,
+  VStack,
+} from "@chakra-ui/react";
 import { addToAnswer } from "../../feature/answerSlice";
 import { CenteredBox } from "./Utils";
 import { Layout } from "../layout";
@@ -30,7 +37,10 @@ const FirstQuestion = ({ SW }) => {
       <CenteredBox>
         <VStack spacing={10}>
           <Center>
-            <Heading color={"#00ADB5"} fontSize={"xl"}>
+            <Heading
+              color={useColorModeValue("rebeccapurple", "#00ADB5")}
+              fontSize={"xl"}
+            >
               {question}
             </Heading>
           </Center>
