@@ -13,6 +13,14 @@ export default defineConfig({
         short_name: "CS490PersonalityQuizWeb",
         description:
           "Web version of the personality application found in Develop in Swift fundamentals book.",
+        icons: [
+          {
+            src: "maskable.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
+          },
+        ],
       },
     }),
   ],
