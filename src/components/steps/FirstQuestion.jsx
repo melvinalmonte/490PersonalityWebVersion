@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import data from "../../data/questions.json";
 import { Center, Heading, Progress, Text, VStack } from "@chakra-ui/react";

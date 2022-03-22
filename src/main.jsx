@@ -9,7 +9,7 @@ import { registerSW } from "virtual:pwa-register";
 
 // Registering PWA serviceworker
 if ("serviceWorker" in navigator) {
-    registerSW();
+  registerSW();
 }
 
 ReactDOM.render(

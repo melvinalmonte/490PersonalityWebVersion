@@ -1,3 +1,4 @@
+import React from "react";
 import data from "../../data/questions.json";
 import { useDispatch } from "react-redux";
 import { useState } from "react";

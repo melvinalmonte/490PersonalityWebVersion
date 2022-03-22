@@ -3,7 +3,6 @@ import {
   Box,
   chakra,
   Container,
-  useBreakpoint,
   useColorModeValue,
 } from "@chakra-ui/react";
 
