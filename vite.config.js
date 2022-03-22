@@ -9,6 +9,7 @@ export default defineConfig({
     VitePWA({
       includeAssets: ["robots.txt", "maskable.png"],
       manifest: {
+        start_url: "/",
         name: "CS 490 Personality Quiz Web Version",
         short_name: "CS490PersonalityQuizWeb",
         theme_color: "#ffffff",
