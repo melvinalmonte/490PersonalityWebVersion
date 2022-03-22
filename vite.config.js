@@ -7,10 +7,11 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      includeAssets: ["robots.txt"],
+      includeAssets: ["robots.txt", "maskable.png"],
       manifest: {
         name: "CS 490 Personality Quiz Web Version",
         short_name: "CS490PersonalityQuizWeb",
+        theme_color: "#ffffff",
         description:
           "Web version of the personality application found in Develop in Swift fundamentals book.",
         icons: [
