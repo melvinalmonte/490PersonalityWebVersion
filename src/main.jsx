@@ -6,6 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import store from "./feature/store";
 import { registerSW } from "virtual:pwa-register";
+import "animate.css"
 
 // Registering PWA serviceworker
 if ("serviceWorker" in navigator) {

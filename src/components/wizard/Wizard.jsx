@@ -19,8 +19,21 @@ const Wizard = () => {
     });
   const { SW } = state;
 
+  let custom = {
+    enterRight: "animate__animated animate__fadeIn",
+    enterLeft: "animate__animated animate__fadeIn",
+    exitRight: "animate__animated animate__fadeOut",
+    exitLeft: "animate__animated animate__fadeOut",
+    intro: "animate__animated animate__fadeIn",
+  };
+
   return (
-    <StepWizard isLazyMount instance={setInstance} className="wizard-component">
+    <StepWizard
+      isLazyMount
+      instance={setInstance}
+      className="wizard-component"
+      transitions={custom}
+    >
       <IntroView SW={SW} />
       <FirstQuestion SW={SW} />
       <SecondQuestion SW={SW} />
